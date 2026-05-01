@@ -34,29 +34,51 @@
         textSize(20);
       }
       
+      curText = 0;
+      function toggleText() {
+      	if (curText == 3) {
+      		curText = 0;
+      	} else {
+      		curText += 1;
+      	}
+      }
       function draw() {
         background(0);
         
         fill('white');
         text('Zugysensae™', x, y);
         
+        if (curText >= 1) {
+        	text('Buy now!!', x - 2, y + 20);
+        }
+        if (curText >= 2) {
+        	text('Really cheap!!!!!', x - 2, y + 40);
+        }
+        if (curText >= 3) {
+        	text('Only $1,000,000!!!!!!!!!!', x - 2, y + 60);
+        }
+        
         x = x + speedX;
         y = y + speedY;
         
         if (x > width - 55){
         	speedX = -6;
+            toggleText()
         }
         
         if (x < 55){
           speedX = 6;
+          toggleText()
         }
         
         if (y > height - 55){
         	speedY = -5;
+            toggleText()
         }
         
         if (y < 55){
           speedY = 5;
+          toggleText()
         }
         
       }
